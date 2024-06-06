@@ -5,6 +5,10 @@ class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = '__all__'
+        extra_kwargs = {
+            # This ensures the image field is required
+            'image': {'required': True},  
+        }
 
     def create(self, validated_data):
         # Extract and remove the 'image' field from the validated data

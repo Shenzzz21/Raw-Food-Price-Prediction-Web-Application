@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import submit_feedback, get_feedbacks, search_feedbacks
+from . import views
 
 urlpatterns = [
-    path('submit_feedback/', submit_feedback, name='submit_feedback'),
-    path('get_feedbacks/', get_feedbacks, name='get_feedbacks'),
-    path('search_feedbacks/', search_feedbacks, name='search_feedbacks'),  # Endpoint to search feedbacks
-    # path('get_user_id/', get_user_id, name='get_user_id'),
-
+    path('submit_feedback/', views.submit_feedback, name='submit_feedback'),
+    path('get_feedbacks/', views.get_feedbacks, name='get_feedbacks'),
+    path('search_feedbacks/', views.search_feedbacks, name='search_feedbacks'),
+    path('delete_feedback/<int:feedback_id>/', views.delete_feedback, name='delete_feedback'),
 ]

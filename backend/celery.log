@@ -1,0 +1,360 @@
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x0000027A856BDD20>> raised: ImportError('Unable to import required dependencies:\nnumpy: DLL load failed while importing _philox: The paging file is too small for this operation to complete.')
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 32, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: DLL load failed while importing _philox: The paging file is too small for this operation to complete.
+Signal handler <promise@0x24a4465e980 --> <bound method Celery._autodiscover_tasks of <Celery backend at 0x24a446f34c0>>> raised: ImportError("cannot import name 'convert_notebook' from 'data_scrape.convert_notebook' (D:\\ISLINGTON\\Year 3\\FYP\\Final Project (automated)\\AgroCost (Raw Food Price Prediction)\\backend\\data_scrape\\convert_notebook.py)")
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\vine\promises.py", line 161, in __call__
+    return self.throw()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\vine\promises.py", line 158, in __call__
+    retval = fun(*final_args, **final_kwargs)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\app\base.py", line 694, in _autodiscover_tasks
+    return self._autodiscover_tasks_from_fixups(related_name)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\app\base.py", line 703, in _autodiscover_tasks_from_fixups
+    return self._autodiscover_tasks_from_names([
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\app\base.py", line 698, in _autodiscover_tasks_from_names
+    return self.loader.autodiscover_tasks(
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\loaders\base.py", line 220, in autodiscover_tasks
+    mod.__name__ for mod in autodiscover_tasks(packages or (),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\loaders\base.py", line 246, in autodiscover_tasks
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\loaders\base.py", line 246, in <listcomp>
+    return [find_related_module(pkg, related_name) for pkg in packages]
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\loaders\base.py", line 270, in find_related_module
+    return importlib.import_module(module_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\data_scrape\tasks.py", line 4, in <module>
+    from .convert_notebook import convert_notebook
+ImportError: cannot import name 'convert_notebook' from 'data_scrape.convert_notebook' (D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\data_scrape\convert_notebook.py)
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x0000021C72331D20>> raised: ImportError('Unable to import required dependencies:\nnumpy: DLL load failed while importing _sfc64: The paging file is too small for this operation to complete.')
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 32, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: DLL load failed while importing _sfc64: The paging file is too small for this operation to complete.
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x000001BD11E61D20>> raised: ImportError('Unable to import required dependencies:\nnumpy: Error importing numpy: you should not try to import numpy from\n        its source directory; please exit the numpy source tree, and relaunch\n        your python interpreter from there.')
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 32, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: Error importing numpy: you should not try to import numpy from
+        its source directory; please exit the numpy source tree, and relaunch
+        your python interpreter from there.
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x00000253C5701D20>> raised: ImportError('Unable to import required dependencies:\nnumpy: DLL load failed while importing _umath_linalg: The paging file is too small for this operation to complete.')
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 32, in <module>
+    raise ImportError(
+ImportError: Unable to import required dependencies:
+numpy: DLL load failed while importing _umath_linalg: The paging file is too small for this operation to complete.
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x0000024165AE1D20>> raised: ImportError('DLL load failed while importing hashtable: The paging file is too small for this operation to complete.')
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 62, in <module>
+    from pandas.core.api import (
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\core\api.py", line 1, in <module>
+    from pandas._libs import (
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\_libs\__init__.py", line 18, in <module>
+    from pandas._libs.interval import Interval
+  File "interval.pyx", line 1, in init pandas._libs.interval
+ImportError: DLL load failed while importing hashtable: The paging file is too small for this operation to complete.
+Signal handler <bound method DjangoFixup.on_import_modules of <celery.fixups.django.DjangoFixup object at 0x000001FFC5911D20>> raised: MemoryError()
+Traceback (most recent call last):
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\utils\dispatch\signal.py", line 276, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 100, in on_import_modules
+    self.worker_fixup.validate_models()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\celery\fixups\django.py", line 140, in validate_models
+    run_checks()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\registry.py", line 88, in run_checks
+    new_errors = check(app_configs=app_configs, databases=databases)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 14, in check_url_config
+    return check_resolver(resolver)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\core\checks\urls.py", line 24, in check_resolver
+    return check_method()
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 494, in check
+    for pattern in self.url_patterns:
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 715, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\utils\functional.py", line 57, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\resolvers.py", line 708, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\backend\urls.py", line 15, in <module>
+    path('api/', include('raw_food_item.urls')),
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\django\urls\conf.py", line 38, in include
+    urlconf_module = import_module(urlconf_module)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python310\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1050, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 883, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\urls.py", line 2, in <module>
+    from . import views
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\backend\raw_food_item\views.py", line 15, in <module>
+    import pandas as pd
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\pandas\__init__.py", line 27, in <module>
+    __import__(_dependency)
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\numpy\__init__.py", line 170, in <module>
+    from . import polynomial
+  File "D:\ISLINGTON\Year 3\FYP\Final Project (automated)\AgroCost (Raw Food Price Prediction)\env\lib\site-packages\numpy\polynomial\__init__.py", line 116, in <module>
+    from .polynomial import Polynomial
+  File "<frozen importlib._bootstrap>", line 1027, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1006, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 688, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 975, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_data
+MemoryError

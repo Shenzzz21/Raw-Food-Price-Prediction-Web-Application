@@ -1,73 +1,39 @@
-# # views.py
-
-# from rest_framework import generics
-# from .models import UserAccount
-# from .serializers import UserCreateSerializer
-
-# class UserListAPIView(generics.ListAPIView):
-#     queryset = UserAccount.objects.all()
-#     serializer_class = UserCreateSerializer
-
-# views.py
-
-from django.db import connection
 from django.http import JsonResponse
-
-# authentication_app/views.py
-
-# import axios
-from django.contrib.auth import authenticate
-
-def login(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-
-        # Authenticate user
-        # user = authenticate(request, email=email, password=password)
-        # if user is not None:
-        #     # Check if the email matches the specific email and redirect to dashboard
-        #     if email == 'sheneeza.chaudhary@gmail.com':
-        #         return JsonResponse({'redirect': '/dashboard'})
-        #     else:
-        #         # Handle other authenticated users, e.g., redirect to home page
-        #         return JsonResponse({'redirect': '/home'})
-        # else:
-        #     # Handle invalid credentials
-        #     return JsonResponse({'error': 'Invalid email or password'}, status=400)
-    else:
-        # Handle invalid request method
-        return JsonResponse({'error': 'Invalid request method'}, status=405)
-
-
-
-def get_users(request):
-    # Execute SQL query to fetch user data
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT id, name, email, registered_date, subscription_status, subscription_date FROM public.authentication_app_useraccount ORDER BY id DESC")
-        rows = cursor.fetchall()
-
-    # Convert the fetched data into a list of dictionaries
-    users = []
-    for row in rows:
-        user = {
-            'id': row[0],
-            'name': row[1],
-            'email': row[2],
-            'registered_date': row[3],
-            'subscription_status': row[4],
-            'subscription_date': row[5],
-            # Add other fields as needed
-        }
-        users.append(user)
-
-    # Return the fetched user data as JSON response
-    return JsonResponse(users, safe=False)
-
-
 from django.db.models import Q
-from .models import UserAccount  # Assuming you have a User model
+from .models import UserAccount
+from rest_framework.decorators import api_view
+from django.core.mail import send_mail
+import json
 
+# Function to check if a user is an admin
+@api_view(['POST'])
+def check_is_admin(request):
+    try:
+        data = json.loads(request.body)
+        email = data.get('email')
+        if email:
+            # Fetch user details by email
+            user = UserAccount.objects.get(email=email)
+            # Check if the user is a superuser
+            is_superuser = user.is_superuser
+            print(user)
+            return JsonResponse({'is_superuser': is_superuser})
+        else:
+            return JsonResponse({'error': 'Email is required'}, status=400)
+    except UserAccount.DoesNotExist:
+        return JsonResponse({'error': 'User not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+    
+
+# Function to get all users   
+def get_users(request):
+    # Fetch user data
+    users = UserAccount.objects.all().values('id', 'name', 'email', 'registered_date', 'is_active', 'subscription_status', 'subscription_date')
+    return JsonResponse(list(users), safe=False)
+
+
+# Function to search for users by name or email
 def search_users(request):
     if request.method == 'GET':
         query = request.GET.get('query')
@@ -85,23 +51,17 @@ def search_users(request):
         return JsonResponse({'error': 'Invalid request method'}, status=405)
     
 
-
-from django.http import JsonResponse
-from rest_framework.decorators import api_view
-from .models import UserAccount
-import json
-
-# @require_POST
+# Function to update user details
 @api_view(['PUT'])
 def update_user(request):
         if request.method == 'PUT':
             try:
                 data = json.loads(request.body)
                 user_data = data.get('user')
-                print(user_data)
+
                 if user_data:
                     user_id = user_data.get('id')
-                    print(user_id)
+
                     if user_id:
                         user = UserAccount.objects.get(pk=user_id)
                         # Update user details
@@ -117,20 +77,25 @@ def update_user(request):
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=500)
 
-
-from django.http import JsonResponse
-from django.views.decorators.http import require_http_methods
-from .models import UserAccount
-
-@require_http_methods(["DELETE"])
+# Function to delete a user
+@api_view(["DELETE"])
 def delete_user(request, user_id):
     try:
         # Retrieve the user object
         user = UserAccount.objects.get(pk=user_id)
-        
+        # Fetch user's email and username
+        user_email = user.email
+        username = user.name
         # Delete the user
         user.delete()
-        
+        # Send email to the user
+        send_mail(
+            'Important: Account Deletion Notification',
+            f"Dear {username},\n\nWe regret to inform you that your account with the username '{username}' on AgroCost has been deleted. This action was taken in accordance with our policies and procedures.\n\nWe understand that this may come as a surprise, and we want to assure you that this decision was not made lightly. If you have any questions or concerns regarding the deletion of your account, please do not hesitate to reach out to our support team.\n\nWe apologize for any inconvenience this may cause you.\n\nThank you for your understanding.",
+            'from@example.com',
+            [user_email],
+            fail_silently=False,
+        )
         return JsonResponse({'message': 'User deleted successfully'}, status=200)
     except UserAccount.DoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
@@ -138,14 +103,13 @@ def delete_user(request, user_id):
         return JsonResponse({'error': str(e)}, status=500)
 
 
-
-
-
+# Function to get details of the logged-in user
 @api_view(['GET'])
 def user_details(request):
     if request.method == 'GET':
         try:
-            user_id = request.user.id  # Get the current user's id
+            # Get the current user's id
+            user_id = request.user.id  
             user = UserAccount.objects.get(pk=user_id)
             # Extract user details
             user_details = {
@@ -158,11 +122,13 @@ def user_details(request):
             return JsonResponse({'error': str(e)}, status=500)
 
 
+# Function to update the profile of the logged-in user
 def update_profile(request):
     if request.method == 'PUT':
         try:
             data = json.loads(request.body)
-            user_id = data.get('userId')  # Extract userId from request data
+            # Extract userId from request data
+            user_id = data.get('userId')  
             if user_id:
                 user = UserAccount.objects.get(pk=user_id)
                 # Update user details

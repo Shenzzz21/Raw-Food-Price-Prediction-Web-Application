@@ -1,94 +1,13 @@
-# from rest_framework import status
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from .models import Feedback
-# from .serializers import FeedbackSerializer
-# from authentication_app.models import UserAccount  # Import the UserAccount model
-# from django.views.decorators.csrf import csrf_exempt
-# from django.db.models import Q
-# from django.db import connection
-
-
-
-# @api_view(['POST'])
-# def submit_feedback(request):
-#     if request.method == 'POST':
-#         serializer = FeedbackSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# # @api_view(['POST'])
-# # def submit_feedback(request):
-# #     if request.method == 'POST':
-# #         serializer = FeedbackSerializer(data=request.data)
-# #         if serializer.is_valid():
-# #             serializer.save()
-# #             return Response(serializer.data, status=status.HTTP_201_CREATED)
-# #         else:
-# #             print("Validation Error:", serializer.errors)  # Log the serializer errors
-# #             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# @csrf_exempt
-# @api_view(['POST'])
-# def submit_feedback(request):
-#     if request.method == 'POST':
-#         serializer = FeedbackSerializer(data=request.data)
-#         if serializer.is_valid():
-#             # Check if the email matches any user in the UserAccount model
-#             email = serializer.validated_data['email']
-#             user = UserAccount.objects.filter(email=email).first()
-#             if user:
-#                 # If a user with the provided email exists, get the user ID
-#                 user_id = user.id
-#                 # Save the feedback with the user ID
-#                 serializer.save(email=user_id)
-#                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-#             else:
-#                 # If no user with the provided email exists, return a validation error
-#                 return Response({'email': ['User with this email does not exist.']}, status=status.HTTP_400_BAD_REQUEST)
-#         else:
-#             print("Validation Error:", serializer.errors)  # Log the serializer errors
-#             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# @csrf_exempt
-# @api_view(['GET'])
-# def get_user_id(request):
-#     if request.method == 'GET':
-#         email = request.query_params.get('email', None)
-#         if email:
-#             try:
-#                 # Execute SQL query to retrieve the user ID based on email
-#                 with connection.cursor() as cursor:
-#                     cursor.execute("SELECT id FROM public.authentication_app_useraccount WHERE email = %s", [email])
-#                     row = cursor.fetchone()
-#                     if row:
-#                         # If a user with the provided email exists, return the user ID
-#                         user_id = row[0]
-#                         return Response({'id': user_id}, status=status.HTTP_200_OK)
-#                     else:
-#                         # If no user found with the email, return a not found response
-#                         return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
-#             except Exception as e:
-#                 # Handle any exceptions that might occur during query execution
-#                 return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-#         else:
-#             # If no email provided, return a bad request response
-#             return Response({'error': 'Email parameter is missing'}, status=status.HTTP_400_BAD_REQUEST)
-
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import JsonResponse
 from rest_framework import status
 from .models import Feedback
+from django.db.models import Q
 from .serializers import FeedbackSerializer
-from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 from authentication_app.models import UserAccount
-from django.db import connection
 
-@csrf_exempt
+# API endpoint to submit feedback
 @api_view(['POST'])
 def submit_feedback(request):
     if request.method == 'POST':
@@ -96,7 +15,6 @@ def submit_feedback(request):
         if serializer.is_valid():
             # Extract user_id from request data
             user_id = request.data.get('user_id')
-            print(user_id)
 
             # Check if the user exists
             try:
@@ -111,36 +29,22 @@ def submit_feedback(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# Function to retrieve all feedbacks
 def get_feedbacks(request):
-    # Execute SQL query to fetch feedback data
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT feedback_id, fullname, email, feedback_subject, message, submission_date FROM public.feedback_feedback ORDER BY feedback_id DESC")
-        rows = cursor.fetchall()
+    # Retrieve all instances of the Feedback model using the ORM
+    feedback_objects = Feedback.objects.all().order_by('-feedback_id')
 
-    # Convert the fetched data into a list of dictionaries
-    feedbacks = []
-    for row in rows:
-        feedback = {
-            'feedback_id': row[0],
-            'fullname': row[1],
-            'email': row[2],
-            'feedback_subject': row[3],
-            'message': row[4],
-            'submission_date': row[5],
-            # Add other fields as needed
-        }
-        feedbacks.append(feedback)
+    # Serialize the queryset into JSON format
+    serializer = FeedbackSerializer(feedback_objects, many=True)
 
-    # Return the fetched user data as JSON response
-    return JsonResponse(feedbacks, safe=False)
+    # Return the serialized data as a JSON response
+    return JsonResponse(serializer.data, safe=False)
 
 
-from django.http import JsonResponse
-from .models import Feedback
-from django.db.models import Q
-
+# Function to search for feedbacks based on query parameter
 def search_feedbacks(request):
     if request.method == 'GET':
+        # Extract the query string from the request
         query = request.GET.get('query')
         if query:
             try:
@@ -152,19 +56,24 @@ def search_feedbacks(request):
                     Q(message__icontains=query)
                 )
                 
+                # Initialize an empty list to store formatted feedback data
                 feedback_data = []
                 for feedback in feedbacks:
+                    # Format feedback data into a dictionary
                     feedback_info = {
                         'id': feedback.feedback_id,
                         'fullname': feedback.fullname,
                         'email': feedback.email,
                         'feedback_subject': feedback.feedback_subject,
                         'message': feedback.message,
-                        'submission_date': feedback.submission_date.strftime('%Y-%m-%d')  # Convert datetime to string
+                        # Convert datetime to string
+                        'submission_date': feedback.submission_date.strftime('%Y-%m-%d')  
                     }
+                    # Append the formatted feedback data to the list
                     feedback_data.append(feedback_info)
-                    
-                if not feedback_data:  # If feedback_data is empty
+
+                # If feedback_data is empty
+                if not feedback_data:  
                     return JsonResponse({'error': 'No feedbacks found'}, status=404)
                 return JsonResponse(feedback_data, safe=False)
             
@@ -176,3 +85,20 @@ def search_feedbacks(request):
     
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
+ # API endpoint to delete a feedback 
+@api_view(["DELETE"])
+def delete_feedback(request, feedback_id):
+    try:
+        # Retrieve the feedback object
+        feedback = Feedback.objects.get(pk=feedback_id)
+        
+        # Delete the feedback
+        feedback.delete()
+
+        return JsonResponse({'message': 'Feedback deleted successfully'}, status=200)
+    except Feedback.DoesNotExist:
+        return JsonResponse({'error': 'Feedback not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

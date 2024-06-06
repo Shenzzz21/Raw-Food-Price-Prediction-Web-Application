@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.acaed43d.css",
-    "main.js": "/static/js/main.465b4585.js",
+    "main.css": "/static/css/main.bf04d7db.css",
+    "main.js": "/static/js/main.6ba36511.js",
+    "static/js/703.ad1d155e.chunk.js": "/static/js/703.ad1d155e.chunk.js",
+    "static/js/198.87bbfd97.chunk.js": "/static/js/198.87bbfd97.chunk.js",
     "static/js/787.9e9f4ffd.chunk.js": "/static/js/787.9e9f4ffd.chunk.js",
     "static/media/budget-optimization.png": "/static/media/budget-optimization.76bc2725911762309645.png",
     "static/media/accurate-price-predictions.png": "/static/media/accurate-price-predictions.ae616c4fb7e6be1eeeae.png",
@@ -10,6 +12,7 @@
     "static/media/contact-background.jpg": "/static/media/contact-background.818b168180907f5b4e5d.jpg",
     "static/media/continuous-improvement.png": "/static/media/continuous-improvement.61bdefc7ddb0f5d60fb4.png",
     "static/media/landpage-bg.jpg": "/static/media/landpage-bg.f75682adaa254f0f20f6.jpg",
+    "static/media/cat-404.png": "/static/media/cat-404.88355d13ccb0939f9bf5.png",
     "static/media/budget-optimization-flip-card.png": "/static/media/budget-optimization-flip-card.0d566ae509c82f25a0c6.png",
     "static/media/cat-dry-fruits.png": "/static/media/cat-dry-fruits.4d1d3068419b7bc03ccf.png",
     "static/media/cat-meat.png": "/static/media/cat-meat.4e8863f651d6bf619f23.png",
@@ -21,6 +24,7 @@
     "static/media/cat-pulses.jpg": "/static/media/cat-pulses.e6d5398d02f37c88c90a.jpg",
     "static/media/shopping.png": "/static/media/shopping.a1efd8047ab8623cf346.png",
     "static/media/veggies-banner.jpg": "/static/media/veggies-banner.721822cf1264b67469f3.jpg",
+    "static/media/angry-wizard.png": "/static/media/angry-wizard.839c14e2fd25fb7dc2a4.png",
     "static/media/log-in-icon.png": "/static/media/log-in-icon.6e5e839f652c6b64b1eb.png",
     "static/media/cat-veggies.jpg": "/static/media/cat-veggies.9db52051435cf85d391b.jpg",
     "static/media/prediction.png": "/static/media/prediction.3a217d2ac4bc0353e247.png",
@@ -39,12 +43,14 @@
     "static/media/twitter-logo.png": "/static/media/twitter-logo.0b5d0d8da8e0eb7e6aaf.png",
     "static/media/redux.cjs": "/static/media/redux.7edfc461ab353f1712ab.cjs",
     "index.html": "/index.html",
-    "main.acaed43d.css.map": "/static/css/main.acaed43d.css.map",
-    "main.465b4585.js.map": "/static/js/main.465b4585.js.map",
+    "main.bf04d7db.css.map": "/static/css/main.bf04d7db.css.map",
+    "main.6ba36511.js.map": "/static/js/main.6ba36511.js.map",
+    "703.ad1d155e.chunk.js.map": "/static/js/703.ad1d155e.chunk.js.map",
+    "198.87bbfd97.chunk.js.map": "/static/js/198.87bbfd97.chunk.js.map",
     "787.9e9f4ffd.chunk.js.map": "/static/js/787.9e9f4ffd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.acaed43d.css",
-    "static/js/main.465b4585.js"
+    "static/css/main.bf04d7db.css",
+    "static/js/main.6ba36511.js"
   ]
 }
